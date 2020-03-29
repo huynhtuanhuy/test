@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content>
     <meta name="keyword" content>
-    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link rel="shortcut icon" href="/test/img/ironman-draw.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
@@ -18,24 +18,24 @@
         
     </title>
 
-    <link rel="canonical" href="techblog.com/2020/03/27/CreateBlog/">
+    <link rel="canonical" href="huynhtuanhuy.github.io/test/2020/03/27/CreateBlog/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/test/css/bootstrap.min.css">
 
     <!-- Custom CSS --> 
-    <link rel="stylesheet" href="/css/beantech.min.css">
+    <link rel="stylesheet" href="/test/css/beantech.min.css">
     
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/test/css/highlight.css">
 
-    <link rel="stylesheet" href="/css/widget.css">
+    <link rel="stylesheet" href="/test/css/widget.css">
 
-    <link rel="stylesheet" href="/css/rocket.css">
+    <link rel="stylesheet" href="/test/css/rocket.css">
 
-    <link rel="stylesheet" href="/css/signature.css">
+    <link rel="stylesheet" href="/test/css/signature.css">
 
-    <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/test/css/toc.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -74,7 +74,7 @@
     }
     
     #signature{
-        background-image: url('/undefined');
+        background-image: url('/test/undefined');
     }
     
 </style>
@@ -116,7 +116,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Tech Blog</a>
+            <a class="navbar-brand" href="/test/">Tech Blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -129,7 +129,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Home</a>
+                        <a href="/test/">Home</a>
                     </li>
 
                     
@@ -139,21 +139,21 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/test/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/test/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/test/tags/">Tags</a>
                         </li>
                         
                     
@@ -238,7 +238,7 @@
 <h2><span id="now-we-start-crafting-our-react-application">Now we start crafting our React application</span></h2>
 <h3><span id="creating-forms-for-crud-add-function">Creating forms for CRUD (Add function)</span></h3>
 <p>Handling Forms is probably the most important step in the frontend side. Here I will create 2 components which is <strong>AddPost</strong> to handle adding new posts and <strong>PostList</strong> to render all the posts we have. You should structure the folders so that you have a component folder to store all your components.</p>
-<img src="/2020/03/27/CreateBlog/folderStructure.PNG">
+<img src="/test/2020/03/27/CreateBlog/folderStructure.PNG">
 <p>Below is the setup for my <strong>AddPost</strong> component. Here we will pass an <strong>addPost</strong> as a <strong>props</strong> which later we will pass the actual function to add new post from the main App component. This component will return a form that includes 3 inputs for 3 main values of a post which are <strong><em>title, headline and content</em></strong>.</p>
 <p>I also use the standard form handling which is setting a <strong>postInfo</strong> state that carries the attributes of the new post which are <strong><em>title, headline and content</em></strong>. Whenever an input is changing (when the user is entering information) the postInfo will receive that value and update the state.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> AddPost = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;addPost&#125; = props</span><br><span class="line">  <span class="comment">// const id = useSelector((state) =&gt; state.ListPosts.length + 1)</span></span><br><span class="line">  <span class="keyword">const</span> dispatch = useDispatch()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [postInfo, setPostInfo] = useState(&#123;</span><br><span class="line">    <span class="comment">// id: id,</span></span><br><span class="line">    title: <span class="string">""</span>,</span><br><span class="line">    headline: <span class="string">""</span>,</span><br><span class="line">    content: <span class="string">""</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> onSubmitHandler = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    e.preventDefault()</span><br><span class="line">    addPost(postInfo) </span><br><span class="line">    setPostInfo(&#123;</span><br><span class="line">      title:<span class="string">""</span>,</span><br><span class="line">      headline:<span class="string">""</span>,</span><br><span class="line">      content:<span class="string">""</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;form onSubmit=&#123;onSubmitHandler&#125;&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type=<span class="string">"text"</span></span><br><span class="line">          name=<span class="string">"title"</span></span><br><span class="line">          placeholder=<span class="string">"Enter title"</span></span><br><span class="line">          value=&#123;postInfo.title&#125;</span><br><span class="line">          onChange=&#123;(e) =&gt; &#123; setPostInfo(&#123; ...postInfo, <span class="attr">title</span>: e.target.value &#125;) &#125;&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">       &lt;input</span><br><span class="line">          type=<span class="string">"text"</span></span><br><span class="line">          name=<span class="string">"headline"</span></span><br><span class="line">          placeholder=<span class="string">"Enter headline"</span></span><br><span class="line">          value=&#123;postInfo.headline&#125;</span><br><span class="line">          onChange=&#123;(e) =&gt; &#123; setPostInfo(&#123; ...postInfo, <span class="attr">headline</span>: e.target.value &#125;) &#125;&#125;</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;input</span><br><span class="line">          type=<span class="string">"text"</span></span><br><span class="line">          name=<span class="string">"content"</span></span><br><span class="line">          placeholder=<span class="string">"Enter content"</span></span><br><span class="line">          value=&#123;postInfo.content&#125;</span><br><span class="line">          onChange=&#123;(e) =&gt; &#123; setPostInfo(&#123; ...postInfo, <span class="attr">content</span>: e.target.value &#125;) &#125;&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">        &lt;input type=<span class="string">"submit"</span> value=<span class="string">"Submit"</span>/&gt;</span><br><span class="line"></span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br></pre></td></tr></table></figure>
@@ -265,7 +265,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">  ListPosts:[],</span><br><span class="line">  SearchList:[],</span><br><span class="line">  MailList:[]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state = initialState, action</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> actionTypes.ADD_POST:</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          ListPosts:state.ListPosts.concat(action.newPost)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Inside the reducer, as I have mentioned before, I set a global state <strong>ListPosts</strong> to store all the posts that would be rendered to the screen.</p>
 <p>Every time the action <strong><em>add new Post</em></strong> is dispatched, it will execute the asynchronous functions in the action, updating the database and then it will go through the reducer, performing the action of adding a new post to the global state <strong>ListPosts</strong>. So here we update both the ListPosts state and the database. The image below should help you out a bit with this action flow :))</p>
-<img src="/2020/03/27/CreateBlog/actionFlow.PNG">
+<img src="/test/2020/03/27/CreateBlog/actionFlow.PNG">
 <p>There, we are pretty much done with the <strong>Add new post</strong> function in the client-side.</p>
 <h3><span id="creating-a-server-for-the-website-using-nodejs-and-express">Creating a server for the website using Nodejs and Express</span></h3>
 <p>I will create another folder called backend in my project and a file <strong>server.js</strong> inside that folder. This file will hold all of my server for the website. The settings are right below:</p>
@@ -276,9 +276,9 @@
 <p>Our server is completed and now we are going to set up our <strong>MongoDB</strong> database and connect it to our server.</p>
 <h3><span id="setting-up-the-database-using-mongodb-compass">Setting up the database using MongoDB Compass</span></h3>
 <p>You will have to install the latest stable version of <a href="https://robomongo.org/download" target="_blank" rel="noopener">Robo3T</a> and <a href="https://www.mongodb.com/products/compass" target="_blank" rel="noopener">MongoDB Compass</a> in order to setup the database. Once you have installed and set everything up, your database should look like this:</p>
-<img src="/2020/03/27/CreateBlog/mongodb.PNG">
+<img src="/test/2020/03/27/CreateBlog/mongodb.PNG">
 <p>Typically, your <strong>connection</strong> will be localhost:27017 so you will be able to create a new database inside the connection. I create my own database and named it <strong>“ListPostsBlog”</strong>. Inside the database, there will be different collections and each <strong>collections</strong> should serve its own purpose. For example, I will have a collection ListPostsForBlog where I will store all my posts as <strong>documents</strong> like below</p>
-<img src="/2020/03/27/CreateBlog/mongoexample.PNG">
+<img src="/test/2020/03/27/CreateBlog/mongoexample.PNG">
 <p>If you get here, it means that you have successfully set up the database and it is ready to use.</p>
 <h3><span id="connecting-the-database-to-the-server">Connecting the database to the server</span></h3>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"http://localhost:3000"</span>); <span class="comment">// update to match the domain you will make the request from</span></span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Origin, X-Requested-With, Content-Type, Accept"</span>);</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"GET, POST, OPTIONS, PUT, DELETE"</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mongoose.connect(</span><br><span class="line">  <span class="string">'mongodb://localhost/ListPostsBlog'</span>,</span><br><span class="line">  &#123;</span><br><span class="line">      useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">      useUnifiedTopology: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  (err) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(err)</span><br><span class="line">      <span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">"DB connect success!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
@@ -353,7 +353,7 @@ similar to Microsoft Access that I learnt in grade 12 (something I see as really
                     
                     
                         <li class="next">
-                            <a href="/2020/03/26/intro/" data-toggle="tooltip" data-placement="top" title="Post#1 How I started coding ...">Next Post &rarr;</a>
+                            <a href="/test/2020/03/26/intro/" data-toggle="tooltip" data-placement="top" title="Post#1 How I started coding ...">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -397,7 +397,7 @@ similar to Microsoft Access that I learnt in grade 12 (something I see as really
                 
                 <section>
                     <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="/test/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
                     </div>
@@ -418,8 +418,8 @@ similar to Microsoft Access that I learnt in grade 12 (something I see as really
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "techblog.com/2020/03/27/CreateBlog/";
-    var disqus_url = "techblog.com/2020/03/27/CreateBlog/";
+    var disqus_identifier = "huynhtuanhuy.github.io/2020/03/27/CreateBlog/";
+    var disqus_url = "huynhtuanhuy.github.io/2020/03/27/CreateBlog/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -516,13 +516,13 @@ similar to Microsoft Access that I learnt in grade 12 (something I see as really
 </footer>
 
 <!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
+<script src="/test/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
+<script src="/test/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
+<script src="/test/js/hux-blog.min.js"></script>
 
 
 <!-- async load function -->
@@ -560,7 +560,7 @@ similar to Microsoft Access that I learnt in grade 12 (something I see as really
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("techblog.com/js/jquery.tagcloud.js",function(){
+        async("huynhtuanhuy.github.io/test/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -610,7 +610,7 @@ similar to Microsoft Access that I learnt in grade 12 (something I see as really
 	<a id="rocket" href="#top" class=""></a>
 	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
-<img src="techblog.com/img/icon_wechat.png" width="0" height="0" />
+<img src="huynhtuanhuy.github.io/test/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
